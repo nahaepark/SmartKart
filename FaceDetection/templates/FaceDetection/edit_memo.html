@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+
+</style>
+<body>
+    <h1>수정</h1>
+<form method='post' action='/update_memo/'>
+    {% csrf_token %}
+    제목: <input name='mname' value={{edit_memo.mname}}><br>
+    내용: <input name='mdetail' value= {{edit_memo.mdetail}}><br>
+    예산: <input name='budget' value= {{edit_memo.budget}}><br>
+    목적: <input name='label' value={{edit_memo.label}}><br>
+    <button type='submit'>저장 </button>
+</form>
+
+<a href='/memolistview'>리스트</a>    
+
+</body>
+</html>
+{%endblock%}

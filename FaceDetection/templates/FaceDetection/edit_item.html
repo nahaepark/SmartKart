@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+
+</style>
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basket list</title>
+</head>
+<body>
+    <h1>수정</h1>
+<form method='post' action='/update_item/'>
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th scope="row">번호</th>
+                <td><input name='bsno' type='hidden' value={{item.bsno}}>{{item.bsno}}</td>
+                      
+            </tr>
+          <tr>
+            <th scope="row">수량</th>
+            <td><input name='pdqty' value={{item.pdqty}}></td>
+          </tr>
+          <tr>
+            <th scope="row">제품명</th>
+            <td colspan="4"><input name='pdname' value={{item.pdname}}></td>            
+          </tr>
+          <tr>
+            <th scope="row">가격</th>
+            <td colspan="4"><input name='pdprice' value= {{item.pdprice}}></td>            
+          </tr>
+          </tbody>
+          
+      </table>
+<button type='submit' class="btn btn-white ml-2">저장 </button>
+    
+</form>
+ 
+
+</body>
+</html>
+{%endblock%}

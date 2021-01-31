@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+
+
+
+
+</style>
+
+<div class="container px-4 py-5 mx-auto">
+    <div class="card card0">       
+        
+        <div class = "mt-1 mb-4"><h3>- 내정보 - 
+        </h3>
+        <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td scope="row">이메일</td>
+                <td>{{uemail}}</td>
+              </tr>
+              <tr>
+                <th scope="row" colspan="2">소비패턴 분석</th>
+                
+                
+              </tr>
+              <tr>
+                
+                <td colspan="2"><img src="/static/css/img/img1.jpg" width = "290"><br>
+                <img src="/static/css/img/img2.png" width = "290">
+                </td>
+  
+              </tr>
+              
+              </tbody>
+          </table>
+          
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}

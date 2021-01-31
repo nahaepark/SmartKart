@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+
+.message {
+  list-style:none;
+  background-color:#4ec5a5;
+  color:white;
+  box-shadow: 12px 12px 12px #ffd54f;
+  text-align: center;
+  font-size: 30px;
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basket list</title>
+</head>
+<body>
+    <h1>장바구니 리스트</h1>
+    
+<a href ="/ocr?todo_id={{todo_id}}"  class="btn btn-white ml-2">카메라</a><br><br>
+
+<h3 style="text-align: left;">쇼핑 계획</h3>
+
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">작성일</th>
+      <td>{{memo_item.cdate}}</td>
+      <th scope="row">목적</th>
+      <td>{{memo_item.get_label_display}}</td>
+    </tr>
+    <tr>
+      <th scope="row">제목</th>
+      <td>{{memo_item.mname}}</td>
+      <th scope="row">예산</th>
+      <td>{{memo_item.budget}}</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">내용</th>
+      <td colspan="3">
+        {%for detailitem in mdetail %}
+        <li style = list-style:none;>{{detailitem}}</li>
+        {% endfor %}
+      </td>
+    </tr>
+    </tbody>
+</table>
+
+<br><br><br>
+<form method='post' action='/last_basketlist/'>
+<h3 style="text-align: left;">장바구니</h3>
+
+{% if messages %}
+<ul class='message'>
+	{% for message in messages %}
+		<li{% if message.tags %} class="{{message.tag}}"{%endif%}>
+		{{ message}}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+{% if done_list %}
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            {% comment %} <th scope="col">#</th> {% endcomment %}
+            <th scope="col">제품명</th>
+            <th scope="col">수량</th>
+            <th scope="col">가격</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+            {% for done in done_list %}
+          <p><input name= 'done.bsno' type='hidden' value={{ done.bsno }}></p>
+          <tr>
+            
+            {% comment %} <th scope="col" >{{ done.bsno}}</th> {% endcomment %}
+            <td><a href='/view_item?bsno={{done.bsno}}&todo_id={{done.todo_id}}'>{{done.pdname }}</a></td>
+            <td>{{done.pdqty }}</td>
+            <td>{{done.pdprice}}</td>
+            
+          </tr>
+          {% endfor %} 
+        </tbody>
+      </table>
+    
+    <p><input name= 'total' type='hidden' value={{ total }}></p>
+{% endif %}
+
+총계: {{total}}원<br>
+
+ {% comment %} {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %} {% endcomment %}
+
+
+</body>
+</html>
+{%endblock%}

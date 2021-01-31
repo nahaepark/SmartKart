@@ -1,0 +1,57 @@
+{% extends "loginbase.html" %}
+{%block content%}
+<div class="container px-4 py-5 mx-auto">
+    <div class="card card0">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-10 my-5">
+                        <div class="row justify-content-center px-3 mb-3"><a href="{% url 'login'%}"><img id="logo" src="/static/css/img/cart.png" width = 80></a></div>
+                        <h3 class="mb-5 text-center heading">Smart K-art</h3>
+                        <h6 class="msg-info">Sign-up</h6>
+                        <div class="text-center mb-5" role='alert'>                            
+                            <br>
+                            회원가입이 완료되었습니다:)                        
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <a href = "{%url 'login'%}"> <button class="btn btn-white ml-2">로그인 페이지로 돌아가기</button></a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card card2">
+                 <div class="my-auto mx-md-5 px-md-5 right">
+                     <h3 class="text-white">Smart K-art에<br> 오신것을 환영합니다. :> </h3> <h6 class="text-white">Smart K-art는 똑똑한 소비자를 위한 똑똑한 계산형 장바구니 서비스입니다.<br> 충동구매와 과소비를 방지할수 있어요!</h6>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+<!-- {% comment %} {% extends 'base.html' %}
+
+{% block title%}
+{% endblock %}
+
+{%block content %} {% endcomment %}
+<div class = "row">
+    <div class="col"></div>
+    <div class="col-6">
+        <div class="alert alert-primary" role='alert'>
+            you are successfully signed up</div>
+        <a href = "{%url 'login'%}"> Move to login</a>
+    </div>
+    <div class ="col"></div>
+</div>
+{% comment %} {% endblock%} {% endcomment %} -->
+
+

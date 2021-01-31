@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basket list</title>
+</head>
+<body>
+    <h1>조회</h1>
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">번호</th>
+            <td>{{item.bsno}}</td>
+            <th scope="row">수량</th>
+            <td>{{item.pdqty}}</td>
+          </tr>
+          <tr>
+            <th scope="row">제품명</th>
+            <td colspan="4">{{item.pdname}}</td>            
+          </tr>
+          <tr>
+            <th scope="row">가격</th>
+            <td colspan="4">{{item.pdprice}}</td>            
+          </tr>
+          </tbody>
+      </table>
+      
+
+<a href='/edit_item?bsno={{item.bsno}}' class='btn btn-white ml-2'>수정</a>
+<a href='/delete_item?bsno={{item.bsno}}&todo_id={{item.todo_id}}' class='btn btn-white ml-2'>삭제</a>
+<a href='/basketlist?todo_id={{item.todo_id}}' class='btn btn-white ml-2'>리스트</a>   
+
+</body>
+</html>
+{%endblock%}

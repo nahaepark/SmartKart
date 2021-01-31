@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+
+</style>
+
+
+<body>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-white ml-2" value="" upload> 이미지 업로드</button><br><br>
+    {% if post %}
+    <img src="{{ post.document.url }}" width = 350>
+    <!-- <p>File uploaded at: <a href="{{ post.document.url }}">{{ post.document }}</a></p> -->
+    <!--<p>contents: {{ ocrResult }}</p>-->
+    <!-- <p>clean contents: {{ cleanResult }}</p> -->
+    <!--<p><input type='text'  value={{ pdname }}></p>  textlist.0 -->
+    <!--<p><input type='text' value={{ pdprice }}></p>-->
+    {% endif %}
+</form>
+<br><br>
+<form method='post' action='/add_item/'>
+{% csrf_token %}
+<!--{{ form.as_p }}-->
+    <!--<button type="submit" class="save btn btn-default" value="" upload> 확인 </button>-->
+    <p><input name='pdname' type='text'  value={{ pdname }}></p>
+    <p><input name= 'pdprice' type='text' value={{ pdprice }}></p>
+    <p><input name= 'todo_id' type='hidden' value={{ todo_id }}></p>
+    <button type="submit" class='btn btn-white ml-2'>저장</button>
+    <a href="{% url 'ocr' %}" class='btn btn-white ml-2' >다시찍기</a>
+</form>
+
+</body>
+{%endblock%}

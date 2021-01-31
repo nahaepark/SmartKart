@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%block content%}
+
+<style>
+
+h6 {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    right: 5px
+}
+    
+</style>
+    
+
+<div class="container px-4 py-5 mx-auto">
+    <div class="card card0">       
+        
+        <div class = "mt-1 mb-4"><h3>- 지난쇼핑목록 -</h3></div>
+            
+                {% for memo in finished_memo_list %}
+                    <div class = 'card-body'>
+                    <h6><a href="/basketlist?todo_id={{memo.id}}">{{memo.mname}}</a>
+                        <span class = "badge badge-{{memo.label}}">
+                        {{memo.get_label_display}}
+                        </span><br>
+                        {{memo.cdate}}
+                            <span class="icons">
+                                <a href="{% url 'recover-list-item' memo.id %}"><i class='fas fa-undo-alt'></i></a>&nbsp;           
+                                <a href="{% url 'delete-list-item' memo.id %}"><i class='fas fa-trash' style="color:red;"></i></a>
+                            </span>
+                        </h6>
+                            
+                    </div>
+                {% endfor %}
+            
+        </div>
+        
+    </div>
+</div>
+{%endblock%}
